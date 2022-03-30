@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+
+
+before_intsall:
+  - docker build -t raghumanu/docker-react -f Dockerfile.dev
+
+script:
+  - docker run -e CI=true raghumanu/docker-react npm run test -- --coverage
+
+language: generic 
